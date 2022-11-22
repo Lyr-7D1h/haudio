@@ -23,26 +23,26 @@ if [[ "$1" != "setup_client" ]] && [[ "$1" != "setup_server" ]] && [[ "$1" != "s
     exit 1
 fi
 
-CLIENT_SERVICE="
-[Unit]
+CLIENT_SERVICE="[Unit]
 Description=Setup zeroconf audio client
 After=network-online.target
 
 [Service]
 Type=oneshot
+ExecStartPost=/bin/sleep 15
 ExecStart=%h/.local/bin/install_zeroconf start_client
 
 [Install]
 WantedBy=default.target
 "
 
-SERVER_SERVICE="
-[Unit]
+SERVER_SERVICE="[Unit]
 Description=Setup zeroconf audio server
 After=network-online.target
 
 [Service]
 Type=oneshot
+ExecStartPost=/bin/sleep 15
 ExecStart=%h/.local/bin/install_zeroconf start_server
 
 [Install]
