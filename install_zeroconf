@@ -95,8 +95,8 @@ install_avahi() {
 
 setup_client() {
     install_avahi
-    echo "$SERVER_SERVICE" > $HOME/.config/systemd/user/zeroconf-client.service
-    echo "Installed service at $HOME/.config/systemd/user/zeroconf-server.service"
+    echo "$CLIENT_SERVICE" > $HOME/.config/systemd/user/zeroconf-client.service
+    echo "Installed service at $HOME/.config/systemd/user/zeroconf-client.service"
     systemctl --user daemon-reload
     systemctl enable --now --user zeroconf-client.service
     echo "Enabled user service zeroconfig-server.service"
