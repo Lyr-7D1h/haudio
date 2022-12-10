@@ -65,6 +65,8 @@ os() {
     VERSION=`cat /proc/version`
     if echo "$VERSION" | grep "archlinux" &>/dev/null ; then
         echo "arch"
+    elif echo "$VERSION" | grep -i "debian" &>/dev/null
+        echo "debian"
     else
         echo "unknown version: $VERSION"
     fi
@@ -77,6 +79,8 @@ install() {
         else
             yes | sudo pacman -S $1
         fi
+    elif os == "debian" &>/dev/null; then
+        yes | sudo apt install $1
     fi
 }
 
